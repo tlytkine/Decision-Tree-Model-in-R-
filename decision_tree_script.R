@@ -31,5 +31,27 @@ training_set
 # 20 percent of data for testing 
 testing_set 
 
+library(rattle)
+library(rpart.plot)
+library(RColorBrewer)
+# Does not work, too much data 
+# fancyRpartPlot(mytree)
+
+# 
+
+test_tree <- rpart(Accident ~ Proposed.Stories + Job.Type + Borough + Square.Footage + General.Contractor + Cost.Estimate , data = training_set, method = "class", minsplit = 2, minbucket = 1)
+
+training_set$Accident_Pred <- predict(test_tree, newdata = training_set, type="class")
+training_set$Accident_Pred <- predict(test_tree, newdata = training_set, type="prob")
+
+printcp(test_tree)
+test_tree
+plot(test_tree)
+print(test_tree)
+text(test_tree)
+plot(test_tree)
+
+
+
 
 
