@@ -50,7 +50,7 @@ plot(test_tree)
 print(test_tree)
 text(test_tree)
 plot(test_tree)
-
+rpart.plot(mytree,extra=4)
 
 
 
